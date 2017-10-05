@@ -11,9 +11,7 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
-import com.sd.contacts.MainActivity;
 import com.sd.contacts.R;
-import com.sd.contacts.events.AddEvent;
 import com.sd.contacts.events.HideMenuEvent;
 import com.sd.contacts.events.HomeEvent;
 import com.sd.contacts.events.SaveEvent;
@@ -38,8 +36,8 @@ public class User extends Fragment implements TabLayout.OnTabSelectedListener
     // Vars
     // /////////////////////////////////////////////////////////////////////////////////////////////
 
-    protected Calendar  myCalendar  = Calendar.getInstance();
-    protected EditText  edittext    = null;
+    protected Calendar myCalendar   = Calendar.getInstance();
+    protected EditText dateText     = null;
 
     //This is our tablayout
     protected TabLayout tabLayout   = null;
@@ -59,9 +57,32 @@ public class User extends Fragment implements TabLayout.OnTabSelectedListener
         View view = inflater.inflate(R.layout.user_view, container, false);
 
         // /////////////////////////////////////////////////////////////////////////////////////////////
+        // First/Last name
+        // /////////////////////////////////////////////////////////////////////////////////////////////
+        EditText userFirstName = (EditText)view.findViewById(R.id.userFirstName);
+        if (null != userFirstName) {
+            userFirstName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View view, boolean hasFocus) {
+                    setModified ();
+                }
+            });
+        }
+
+        EditText userLastName = (EditText)view.findViewById(R.id.userLastName);
+        if (null != userLastName) {
+            userLastName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View view, boolean hasFocus) {
+                    setModified ();
+                }
+            });
+        }
+
+        // /////////////////////////////////////////////////////////////////////////////////////////////
         // Birthday picker
         // /////////////////////////////////////////////////////////////////////////////////////////////
-        edittext = (EditText) view.findViewById(R.id.userDOB);
+        dateText = (EditText) view.findViewById(R.id.userDOB);
 
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
@@ -72,13 +93,17 @@ public class User extends Fragment implements TabLayout.OnTabSelectedListener
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
+                setModified ();
+
                 updateLabel();
             }
         };
 
-        edittext.setOnClickListener(new View.OnClickListener() {
+        dateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setModified ();
+
                 new DatePickerDialog(getActivity(),
                     date,
                     myCalendar.get(Calendar.YEAR),
@@ -114,6 +139,14 @@ public class User extends Fragment implements TabLayout.OnTabSelectedListener
     }
 
     /**
+     * Call this to show the save button.
+     */
+    public void setModified ()
+    {
+        EventBus.getDefault().post(new ShowMenuEvent(R.id.action_save));
+    }
+
+    /**
      * Unregister fragment from event bus when it stops.
      */
     @Override
@@ -135,7 +168,7 @@ public class User extends Fragment implements TabLayout.OnTabSelectedListener
         String myFormat = "MM/dd/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-        edittext.setText(sdf.format(myCalendar.getTime()));
+        dateText.setText(sdf.format(myCalendar.getTime()));
     }
 
     // /////////////////////////////////////////////////////////////////////////////////////////////
@@ -180,6 +213,7 @@ public class User extends Fragment implements TabLayout.OnTabSelectedListener
             EventBus.getDefault().post(new HideMenuEvent(R.id.action_save));
 
             // Save changes.
+            new DialogFrag ().show(getFragmentManager(), "Sample Fragment");
         }
     }
 
