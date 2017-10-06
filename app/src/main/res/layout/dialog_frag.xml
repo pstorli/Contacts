@@ -79,7 +79,7 @@
                 android:textColor="?attr/dialogBtnTextColor"
                 android:text="?attr/dialogNegBtnText"
                 style="?android:attr/borderlessButtonStyle"
-                android:visibility="gone"/>
+                android:visibility="?attr/dialogNegBtnVisible"/>
 
             <Button
                 android:id="@+id/btn_dialog_neu"
@@ -89,7 +89,7 @@
                 android:layout_weight="1"
                 android:text="?attr/dialogNeuBtnText"
                 style="?android:attr/borderlessButtonStyle"
-                android:visibility="gone"/>
+                android:visibility="?attr/dialogNeuBtnVisible"/>
 
             <Button
                 android:id="@+id/btn_dialog_pos"
@@ -98,7 +98,8 @@
                 android:textColor="?attr/dialogBtnTextColor"
                 android:layout_weight="1"
                 style="?android:attr/borderlessButtonStyle"
-                android:text="?attr/dialogPosBtnText" />
+                android:text="?attr/dialogPosBtnText"
+                android:visibility="?attr/dialogPosBtnVisible"/>
         </LinearLayout>
 
     </LinearLayout>
