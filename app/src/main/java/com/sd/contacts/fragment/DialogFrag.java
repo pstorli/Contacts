@@ -30,14 +30,11 @@ public class DialogFrag extends DialogFragment
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
-        final Dialog dialog = new Dialog(getActivity());
+        final Dialog dialog = new Dialog(getActivity(), R.style.QuestionStyle);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_frag);
         dialog.setCancelable(false);
         dialog.setCanceledOnTouchOutside(false);
-
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        dialog.getWindow().getDecorView().setBackgroundResource(android.R.color.transparent);
 
         Button btnClose = (Button) dialog.findViewById(R.id.btn_dialog_pos);
         btnClose.setOnClickListener(new View.OnClickListener() {

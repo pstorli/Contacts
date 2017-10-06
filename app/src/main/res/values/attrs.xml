@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="dialogHeaderBackground" format="reference" value="@color/blue" />
-    <attr name="dialogTitleColor"       format="reference" value="@color/black" />
-    <attr name="dialogTextColor"        format="reference" value="@color/black" />
-    <attr name="dialogHeaderIcon"       format="reference" value="@mipmap/ic_info" />
-    <attr name="dialogBtnTextColor"     format="reference" value="@color/black" />
-
-    <attr name="dialogNegBtnText"       format="reference" value="@string/no" />
-    <attr name="dialogNeuBtnText"       format="reference" value="@string/cancel" />
-    <attr name="dialogPosBtnText"       format="reference" value="@string/ok" />
-
+    <declare-styleable name="ContactsStyle">
+        <attr name="dialogHeaderBackground" format="color" />
+        <attr name="dialogHeaderIcon" format="reference" />
+        <attr name="dialogTextColor" format="color" />
+        <attr name="dialogBtnTextColor" format="color" />
+        <attr name="dialogInputVisible" format="integer" />
+        <attr name="dialogNegBtnText" format="string" />
+        <attr name="dialogNeuBtnText" format="string" />
+        <attr name="dialogPosBtnText" format="string" />
+    </declare-styleable>
 </resources>

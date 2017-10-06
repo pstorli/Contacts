@@ -2,6 +2,7 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -23,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="8dp"
+            android:contentDescription="@string/dialog_header_icon"
             app:srcCompat="?attr/dialogHeaderIcon" />
     </LinearLayout>
 
@@ -45,6 +47,7 @@
             android:layout_marginTop="12dp"
             android:textAlignment="center"
             android:text="@string/yes"
+            android:visibility="visible"
             android:textColor="?attr/dialogTextColor"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -54,9 +57,12 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:inputType="text"
+            android:labelFor="@id/dialog_message"
             android:textColor="?attr/dialogTextColor"
             android:ems="10"
-            android:visibility="gone" />
+            android:visibility="?attr/dialogInputVisible"
+            tools:ignore="LabelFor"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -72,6 +78,7 @@
                 android:layout_weight="1"
                 android:textColor="?attr/dialogBtnTextColor"
                 android:text="?attr/dialogNegBtnText"
+                style="?android:attr/borderlessButtonStyle"
                 android:visibility="gone"/>
 
             <Button
@@ -81,6 +88,7 @@
                 android:textColor="?attr/dialogBtnTextColor"
                 android:layout_weight="1"
                 android:text="?attr/dialogNeuBtnText"
+                style="?android:attr/borderlessButtonStyle"
                 android:visibility="gone"/>
 
             <Button
@@ -89,6 +97,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="?attr/dialogBtnTextColor"
                 android:layout_weight="1"
+                style="?android:attr/borderlessButtonStyle"
                 android:text="?attr/dialogPosBtnText" />
         </LinearLayout>
 
