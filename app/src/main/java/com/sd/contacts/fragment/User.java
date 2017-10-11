@@ -36,8 +36,10 @@ public class User extends Fragment implements TabLayout.OnTabSelectedListener
     // Vars
     // /////////////////////////////////////////////////////////////////////////////////////////////
 
-    protected Calendar myCalendar   = Calendar.getInstance();
-    protected EditText dateText     = null;
+    protected Calendar myCalendar       = Calendar.getInstance();
+    protected EditText dateText         = null;
+    protected EditText userFirstName    = null;
+    protected EditText userLastName     = null;
 
     //This is our tablayout
     protected TabLayout tabLayout   = null;
@@ -59,7 +61,7 @@ public class User extends Fragment implements TabLayout.OnTabSelectedListener
         // /////////////////////////////////////////////////////////////////////////////////////////////
         // First/Last name
         // /////////////////////////////////////////////////////////////////////////////////////////////
-        EditText userFirstName = (EditText)view.findViewById(R.id.userFirstName);
+        userFirstName = (EditText)view.findViewById(R.id.userFirstName);
         if (null != userFirstName) {
             userFirstName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
@@ -69,7 +71,7 @@ public class User extends Fragment implements TabLayout.OnTabSelectedListener
             });
         }
 
-        EditText userLastName = (EditText)view.findViewById(R.id.userLastName);
+        userLastName = (EditText)view.findViewById(R.id.userLastName);
         if (null != userLastName) {
             userLastName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
@@ -209,12 +211,68 @@ public class User extends Fragment implements TabLayout.OnTabSelectedListener
         if (this == getFragmentManager().findFragmentById(Helper.MAIN_FRAG_ID)) {
             Helper.hideSoftKeyboard(getActivity()); // Hide the soft keyboard.
 
-            // Hide the save button.
-            EventBus.getDefault().post(new HideMenuEvent(R.id.action_save));
-
-            // Save changes.
-            new DialogFrag ().show(getFragmentManager(), "Sample Fragment");
+            // If data checks out, save it.
+            if (verifyInputData ()) {
+                // Hide the save button.
+                EventBus.getDefault().post(new HideMenuEvent(R.id.action_save));
+            }
         }
+    }
+
+    /**
+     * Check that name and birthday are entered and
+     * that there is at least one phone number and one email.
+     *
+     * @return true if user has entered all required data.
+     */
+    public boolean verifyInputData ()
+    {
+        boolean success = true;
+
+        // Check first name.
+        String firstName = userFirstName.getText().toString();
+        if (firstName.isEmpty()) {
+            success = false;
+            DialogFrag.warning(this, R.string.invalid_first_name, new DialogFrag.ClickListener() {
+                @Override
+                public void clicked(int btnId, String text) {
+                    userFirstName.requestFocus();
+                }
+            });
+        }
+
+        // All good?
+        if (success) {
+            // Check last name.
+            String lastName = userLastName.getText().toString();
+            if (lastName.isEmpty()) {
+                success = false;
+                DialogFrag.warning(this, R.string.invalid_last_name, new DialogFrag.ClickListener() {
+                    @Override
+                    public void clicked(int btnId, String text) {
+                        userLastName.requestFocus();
+                    }
+                });
+            }
+        }
+
+        // Still good?
+        if (success) {
+            // Check birthday.
+            String birthday = dateText.getText().toString();
+            if (birthday.isEmpty()) {
+                success = false;
+                DialogFrag.warning(this, R.string.invalid_birthday, new DialogFrag.ClickListener() {
+                    @Override
+                    public void clicked(int btnId, String text) {
+                        dateText.requestFocus();
+                    }
+                });
+            }
+        }
+
+        return success;
+
     }
 
     /**

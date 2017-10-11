@@ -6,14 +6,10 @@
         <attr name="dialogHeaderIcon" format="reference" />
         <attr name="dialogTextColor" format="color" />
         <attr name="dialogBtnTextColor" format="color" />
-        <attr name="dialogInputVisible" format="integer" />
 
         <attr name="dialogNegBtnText" format="string" />
         <attr name="dialogNeuBtnText" format="string" />
         <attr name="dialogPosBtnText" format="string" />
 
-        <attr name="dialogNegBtnVisible" format="integer" />
-        <attr name="dialogNeuBtnVisible" format="integer" />
-        <attr name="dialogPosBtnVisible" format="integer" />
     </declare-styleable>
 </resources>

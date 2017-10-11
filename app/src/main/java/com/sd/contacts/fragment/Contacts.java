@@ -226,10 +226,8 @@ public class Contacts extends Fragment
             // When they click this switch out the fragment.
 
             // Add the add/edit user frag.
-            // getFragmentManager().beginTransaction().replace(Helper.MAIN_FRAG_ID, new User(), Helper.USER_FRAGMENT).commit();
+            getFragmentManager().beginTransaction().replace(Helper.MAIN_FRAG_ID, new User(), Helper.USER_FRAGMENT).commit();
 
-            // Save changes.
-            new DialogFrag ().show(getFragmentManager(), "Sample Fragment");
         }
     }
 }

@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
 <RelativeLayout
     android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
             android:labelFor="@id/dialog_message"
             android:textColor="?attr/dialogTextColor"
             android:ems="10"
-            android:visibility="?attr/dialogInputVisible"
+            android:visibility="gone"
             tools:ignore="LabelFor"/>
 
         <LinearLayout
@@ -79,7 +79,7 @@
                 android:textColor="?attr/dialogBtnTextColor"
                 android:text="?attr/dialogNegBtnText"
                 style="?android:attr/borderlessButtonStyle"
-                android:visibility="?attr/dialogNegBtnVisible"/>
+                android:visibility="gone"/>
 
             <Button
                 android:id="@+id/btn_dialog_neu"
@@ -89,7 +89,7 @@
                 android:layout_weight="1"
                 android:text="?attr/dialogNeuBtnText"
                 style="?android:attr/borderlessButtonStyle"
-                android:visibility="?attr/dialogNeuBtnVisible"/>
+                android:visibility="gone"/>
 
             <Button
                 android:id="@+id/btn_dialog_pos"
@@ -99,7 +99,7 @@
                 android:layout_weight="1"
                 style="?android:attr/borderlessButtonStyle"
                 android:text="?attr/dialogPosBtnText"
-                android:visibility="?attr/dialogPosBtnVisible"/>
+                android:visibility="gone"/>
         </LinearLayout>
 
     </LinearLayout>

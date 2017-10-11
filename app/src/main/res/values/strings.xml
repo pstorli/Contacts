@@ -26,6 +26,9 @@
     <string name="dob">DOB</string>
     <string name="email">Email</string>
     <string name="first_name">First Name</string>
+    <string name="invalid_birthday">Please enter a value for birthday.</string>
+    <string name="invalid_first_name">Please enter a value for First Name.</string>
+    <string name="invalid_last_name">Please enter a value for Last Name.</string>
     <string name="home">Home</string>
     <string name="last_name">Last Name</string>
     <string name="no">No</string>

@@ -1,60 +1,58 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="ContactsStyle" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/ColorPrimary</item>
         <item name="colorPrimaryDark">@color/ColorPrimaryDark</item>
         <item name="colorAccent">@color/ColorAccent</item>
+    </style>
 
+    <!-- Base application theme. -->
+    <style name="ContactsStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="dialogHeaderBackground">@color/blue</item>
         <item name="dialogHeaderIcon">@mipmap/ic_info</item>
         <item name="dialogTextColor">@color/black</item>
         <item name="dialogBtnTextColor">@color/black</item>
-        <item name="dialogInputVisible">8</item>
 
-        <item name="dialogNegBtnText">@string/no</item>
-        <item name="dialogNeuBtnText">@string/cancel</item>
-        <item name="dialogPosBtnText">@string/yes</item>
+        <item name="dialogNegBtnText"/>
+        <item name="dialogNeuBtnText"/>
+        <item name="dialogPosBtnText"/>
 
-        <item name="dialogNegBtnVisible">8</item>
-        <item name="dialogNeuBtnVisible">8</item>
-        <item name="dialogPosBtnVisible">8</item>
     </style>
 
     <style name="InfoStyle" parent="ContactsStyle">
         <item name="dialogHeaderBackground">@color/blue</item>
         <item name="dialogHeaderIcon">@mipmap/ic_info</item>
         <item name="dialogPosBtnText">@string/ok</item>
-        <item name="dialogPosBtnVisible">0</item>
     </style>
 
     <style name="WarnStyle" parent="ContactsStyle">
         <item name="dialogHeaderBackground">@color/yellow</item>
         <item name="dialogHeaderIcon">@mipmap/ic_warn</item>
         <item name="dialogPosBtnText">@string/ok</item>
-        <item name="dialogPosBtnVisible">0</item>
     </style>
 
     <style name="ErrorStyle" parent="ContactsStyle">
         <item name="dialogHeaderBackground">@color/red</item>
         <item name="dialogHeaderIcon">@mipmap/ic_error</item>
         <item name="dialogPosBtnText">@string/ok</item>
-        <item name="dialogPosBtnVisible">0</item>
     </style>
 
     <style name="QuestionStyle" parent="ContactsStyle">
         <item name="dialogHeaderBackground">@color/green</item>
         <item name="dialogHeaderIcon">@mipmap/ic_question</item>
-        <item name="dialogInputVisible">0</item>
 
         <item name="dialogNegBtnText">@string/no</item>
         <item name="dialogNeuBtnText">@string/cancel</item>
         <item name="dialogPosBtnText">@string/yes</item>
+    </style>
 
-        <item name="dialogNegBtnVisible">0</item>
-        <item name="dialogNeuBtnVisible">0</item>
-        <item name="dialogPosBtnVisible">0</item>
+    <style name="YesNoStyle" parent="ContactsStyle">
+        <item name="dialogHeaderBackground">@color/green</item>
+        <item name="dialogHeaderIcon">@mipmap/ic_question</item>
+
+        <item name="dialogNegBtnText">@string/no</item>
+        <item name="dialogPosBtnText">@string/yes</item>
     </style>
 
 </resources>
